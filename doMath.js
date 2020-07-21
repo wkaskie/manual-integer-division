@@ -1,18 +1,32 @@
+checkParams = (dividend, divisor) => {
+    if (typeof dividend !== 'number' || typeof dividend !== 'number') {
+        return 'Dividend and divisor must both be numbers';
+    }
+    if (divisor === 0) { return 'Cannot divide by 0'; }
+    return null;
+}
+
 divideBy = (dividend, divisor) => {
+    const paramStatus = checkParams(dividend, divisor);
+    if (paramStatus) { return paramStatus; }
+    
     let quotient = 0;
-    while(dividend >= divisor) {
+    while (dividend >= divisor) {
         dividend = dividend - divisor;
-        if (dividend >= 0 ) { quotient++; }
+        if (dividend >= 0) { quotient++; }
     }
 
     return quotient;
 }
 
 modulo = (dividend, divisor) => {
+    const paramStatus = checkParams(dividend, divisor);
+    if (paramStatus) { return paramStatus; }
+
     let remainder = 0;
-    while(dividend >= divisor) {
+    while (dividend >= divisor) {
         dividend = dividend - divisor;
-        if (dividend > 0 && dividend < divisor ) { remainder = dividend; }
+        if (dividend > 0 && dividend < divisor) { remainder = dividend; }
     }
 
     return remainder;
